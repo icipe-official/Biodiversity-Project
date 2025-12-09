@@ -1,7 +1,7 @@
 # Random Forest Insect Diversity Model — Model Card
 _Africa-wide ecological suitability (D) model for the Insect-Based Biodiversity Intactness (IBI) Indicator_
 
-**Authors:** Tobias Landmann, Komi Mensah Agboka, Vincent Magomere  
+**Authors:** Tobias Landmann, Vincent Magomere, Komi Mensah Agboka  
 **Affiliation:** International Centre of Insect Physiology and Ecology (icipe)  
 **Contact:** tlandmann@icipe.org  
 **Repository:** https://github.com/icipe-official/Biodiversity-Project  
