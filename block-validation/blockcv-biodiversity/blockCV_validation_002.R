@@ -55,7 +55,7 @@ output_dir <- file.path(base_dir, "IBI_Outputs")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 # Input files
-occurrence_file <- file.path("~/Development/geospatial-analysis/Biodiversity-Project/block-validation/blockcv-biodiversity/data/Butterfly_Moth_combined_thinned_5km.csv")
+occurrence_file <- file.path("~/Development/geospatial-analysis/Biodiversity-Project/block-validation/blockcv-biodiversity/data/Butterfly_Moth_combined_final.csv")
 africa_boundary_file <- file.path(input_dir, "africa_boundary.gpkg")
 
 # Predictor rasters
@@ -75,13 +75,13 @@ potential_diversity_raster_file <- file.path(input_dir, "potential_diversity_P_1
 habitat_class_raster_file <- file.path(input_dir, "prehuman_habitat_classes_100m.tif")
 
 # Modelling options
-n_background_candidates <- 10000
+n_background_candidates <- 2000
 presence_absence_ratio <- 1
 n_folds <- 5
 low_conf_auc_threshold <- 0.70
 
 # Spatial thinning distance in metres
-thin_distance_m <- 100
+thin_distance_m <- 1000
 africa_equal_area_crs <- "ESRI:102022"
 
 # Output files
@@ -318,16 +318,66 @@ blocks <- do.call(rbind, blocks_list)
 blocks <- st_transform(blocks, crs(template))
 st_write(blocks, folds_output, delete_dsn = TRUE, quiet = TRUE)
 
+############################################################
+# Visualizing Latitudinal Folds with Occurrences Overlayed
+############################################################
+
+# 1. Prepare data in WGS84 for plotting
+africa_wgs84 <- st_transform(africa, 4326)
+blocks_wgs84 <- st_transform(blocks, 4326)
+pa_wgs84     <- st_transform(pa_sf, 4326)
+
+# Separate presences and absences for distinct styling
+presences_wgs84 <- pa_wgs84 %>% filter(presence == 1)
+absences_wgs84  <- pa_wgs84 %>% filter(presence == 0)
+
+# 2. Build map plot
+fold_plot <- ggplot() +
+  geom_sf(data = africa_wgs84, fill = "gray95", color = "gray70", size = 0.3) +
+  geom_sf(data = blocks_wgs84, aes(fill = factor(fold_id)), alpha = 0.4, color = "black", linetype = "dashed", size = 0.5) +
+  geom_sf_text(data = blocks_wgs84, aes(label = paste("Fold", fold_id)), color = "gray20", fontface = "bold", size = 4.5) +
+  geom_sf(data = absences_wgs84, color = "#d95f02", size = 0.8, alpha = 0.3) +
+  geom_sf(data = presences_wgs84, color = "#1b9e77", size = 1.2, alpha = 0.7) +
+  scale_fill_brewer(palette = "Set3", name = "Latitudinal Fold") +
+  coord_sf(xlim = c(-20, 55), ylim = c(-36, 38), expand = FALSE) +
+  labs(
+    title = "5-Fold Latitudinal Block Cross-Validation",
+    subtitle = "Green: Presence Occurrences | Orange: Pseudo-Absences",
+    x = "Longitude",
+    y = "Latitude"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 10, color = "gray30"),
+    legend.position = "right",
+    panel.grid.major = element_line(color = "gray90", linetype = "dotted")
+  )
+
+# 3. Save map to disk
+ggsave(
+  filename = file.path(output_dir, "latitudinal_folds_with_occurrences.png"),
+  plot = fold_plot,
+  width = 10,
+  height = 9,
+  dpi = 300
+)
+
+print(fold_plot)
+
 
 ############################################################
 # 7. Prepare modelling dataframe
 ############################################################
 
 pa_extract <- terra::extract(predictors_z, vect(pa_sf))
+
+# Explicitly cast to standard data.frame to prevent tibble matrix-indexing errors in maxnet
 model_df <- st_drop_geometry(pa_sf) %>%
   select(id, presence, fold_id) %>%
   bind_cols(pa_extract[, -1]) %>%
-  filter(complete.cases(.))
+  filter(complete.cases(.)) %>%
+  as.data.frame()
 
 model_df$presence <- as.factor(model_df$presence)
 predictor_names <- names(predictors_z)
@@ -339,9 +389,22 @@ predictor_names <- names(predictors_z)
 
 calc_metrics <- function(obs, pred_prob) {
   obs_numeric <- as.numeric(as.character(obs))
-  roc_obj <- pROC::roc(obs_numeric, pred_prob, quiet = TRUE)
-  auc_val <- as.numeric(pROC::auc(roc_obj))
   
+  # 1. Safely calculate ROC / AUC
+  auc_val <- tryCatch({
+    roc_obj <- pROC::roc(
+      response = obs_numeric, 
+      predictor = pred_prob, 
+      levels = c(0, 1),
+      direction = "<", # Explicit direction prevents pROC internal subsetting bugs
+      quiet = TRUE
+    )
+    as.numeric(pROC::auc(roc_obj))
+  }, error = function(e) {
+    NA_real_
+  })
+  
+  # 2. Evaluate thresholds
   thresholds <- seq(0.01, 0.99, by = 0.01)
   
   metric_table <- lapply(thresholds, function(th) {
@@ -358,7 +421,19 @@ calc_metrics <- function(obs, pred_prob) {
     data.frame(threshold = th, sensitivity = sens, specificity = spec, tss = tss)
   }) %>% bind_rows()
   
-  best <- metric_table %>% filter(tss == max(tss, na.rm = TRUE)) %>% slice(1)
+  # Pick best TSS threshold
+  best <- metric_table %>% 
+    filter(!is.na(tss)) %>% 
+    filter(tss == max(tss, na.rm = TRUE)) %>% 
+    slice(1)
+  
+  if (nrow(best) == 0) {
+    return(data.frame(
+      AUC = NA, TSS = NA, threshold = NA, 
+      sensitivity = NA, specificity = NA, kappa = NA
+    ))
+  }
+  
   pred_class_best <- ifelse(pred_prob >= best$threshold, 1, 0)
   
   cm <- caret::confusionMatrix(
@@ -376,24 +451,27 @@ calc_metrics <- function(obs, pred_prob) {
   )
 }
 
-
 ############################################################
 # 9. Model fitting & prediction functions (RF, XGBoost, MaxEnt)
 ############################################################
 
 fit_models <- function(train_df) {
+  # Enforce base data.frame
+  train_df <- as.data.frame(train_df)
   train_df$presence_num <- as.numeric(as.character(train_df$presence))
+  
+  X_train <- train_df[, predictor_names, drop = FALSE]
   
   # 1. Random Forest
   rf_mod <- randomForest::randomForest(
-    x = train_df[, predictor_names], 
+    x = X_train, 
     y = train_df$presence, 
     ntree = 500
   )
   
   # 2. XGBoost
   dtrain <- xgboost::xgb.DMatrix(
-    data = as.matrix(train_df[, predictor_names]),
+    data = as.matrix(X_train),
     label = train_df$presence_num
   )
   
@@ -413,32 +491,43 @@ fit_models <- function(train_df) {
     verbose = 0
   )
   
-  # 3. MaxEnt (maxnet)
-  maxent_mod <- maxnet::maxnet(
-    p = train_df$presence_num,
-    data = train_df[, predictor_names],
-    f = maxnet::maxnet.formula(p = train_df$presence_num, data = train_df[, predictor_names], classes = "lqph")
-  )
+  # 3. MaxEnt (maxnet) with automatic class simplification fallback
+  maxent_mod <- tryCatch({
+    maxnet::maxnet(
+      p = train_df$presence_num,
+      data = X_train,
+      f = maxnet::maxnet.formula(p = train_df$presence_num, data = X_train, classes = "lqph")
+    )
+  }, error = function(e) {
+    message("  [Maxnet Warning] Full 'lqph' features failed on this fold split. Falling back to 'lq' classes.")
+    maxnet::maxnet(
+      p = train_df$presence_num,
+      data = X_train,
+      f = maxnet::maxnet.formula(p = train_df$presence_num, data = X_train, classes = "lq")
+    )
+  })
   
   list(RF = rf_mod, XGBoost = xgb_mod, MaxEnt = maxent_mod)
 }
 
 predict_models_df <- function(models, new_df) {
+  # Enforce base data.frame
+  new_df <- as.data.frame(new_df)
+  X_new <- new_df[, predictor_names, drop = FALSE]
   pred <- list()
   
   # RF
-  pred$RF <- predict(models$RF, newdata = new_df[, predictor_names], type = "prob")[, "1"]
+  pred$RF <- predict(models$RF, newdata = X_new, type = "prob")[, "1"]
   
   # XGBoost
-  dtest <- xgboost::xgb.DMatrix(data = as.matrix(new_df[, predictor_names]))
+  dtest <- xgboost::xgb.DMatrix(data = as.matrix(X_new))
   pred$XGBoost <- predict(models$XGBoost, newdata = dtest)
   
   # MaxEnt
-  pred$MaxEnt <- as.numeric(predict(models$MaxEnt, new_df[, predictor_names], type = "logistic"))
+  pred$MaxEnt <- as.numeric(predict(models$MaxEnt, X_new, type = "logistic"))
   
   as.data.frame(pred)
 }
-
 
 ############################################################
 # 10. Spatial block cross-validation execution
@@ -450,8 +539,8 @@ all_fold_metrics <- list()
 for (fold in fold_ids) {
   message("Running fold ", fold)
   
-  train_df <- model_df %>% filter(fold_id != fold)
-  test_df  <- model_df %>% filter(fold_id == fold)
+  train_df <- model_df %>% filter(fold_id != fold) %>% as.data.frame()
+  test_df  <- model_df %>% filter(fold_id == fold) %>% as.data.frame()
   
   models  <- fit_models(train_df)
   pred_df <- predict_models_df(models, test_df)
