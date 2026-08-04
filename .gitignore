@@ -111,3 +111,7 @@ config
 
 echo "*.RDataTmp" >> .gitignore
 echo "*.RData" >> .gitignore  # optional, if your RData files are also large
+# Temporary R files and workspaces
+*.RDataTmp
+*.RData*
+.RDataTmp
