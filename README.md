@@ -1,6 +1,8 @@
 # Insect-Based Biodiversity Intactness Index (i-BII) for Africa
 ### Python-Based Continental Biodiversity Modeling Framework
 
+![i-BII Workflow](docs/images/workflow.png)
+
 The **Insect-Based Biodiversity Intactness Index (i-BII)** is a reproducible geospatial modeling framework designed to quantify and map patterns of insect biodiversity intactness across Africa. The workflow integrates species occurrence records, environmental predictor variables, spatially explicit machine learning models, spatial block cross-validation, and uncertainty assessment to generate continent-wide biodiversity intactness estimates.
 
 The framework addresses major challenges in large-scale biodiversity modeling, including spatial sampling bias, spatial autocorrelation, uneven observation effort, and uncertainty in model predictions. The resulting products provide scientifically robust indicators that can support biodiversity monitoring, conservation planning, ecological assessment, and environmental policy development.
@@ -30,9 +32,17 @@ To improve interpretation and reliability, the workflow additionally quantifies 
 
 ---
 
-# Pipeline Architecture
+# Workflow Overview
 
 The workflow is organized into modular processing stages that can be executed independently or as a complete end-to-end pipeline.
+
+![Workflow Diagram](docs/images/workflow.png)
+
+*Figure 1. End-to-end workflow for generating the Insect-Based Biodiversity Intactness Index (i-BII), from occurrence data preprocessing through ensemble modelling, uncertainty assessment, and final biodiversity intactness mapping.*
+
+---
+
+# Pipeline Architecture
 
 ## Stage 0 — Occurrence Data Preprocessing
 **File:** `src/00_preprocess_occurrences.py`
@@ -186,6 +196,24 @@ Pixels exceeding the specified uncertainty threshold are masked to produce a con
 
 ---
 
+# Key Results
+
+## Biodiversity Intactness and Observational Uncertainty
+
+![i-BII and Uncertainty](docs/images/IBI_VS_Uncertanity_factored.png)
+
+*Figure 2. Continental-scale Insect-Based Biodiversity Intactness Index (i-BII) after incorporating observational uncertainty. Areas with limited observational support are associated with increased uncertainty and are appropriately reflected in the final biodiversity intactness estimates.*
+
+---
+
+## Independent Validation Using Bird Diversity Data
+
+![Bird Validation](docs/images/BIrds_Validation_03.png)
+
+*Figure 3. Independent validation of the i-BII framework using bird biodiversity observations. The relationship demonstrates the ecological consistency of insect-derived biodiversity intactness estimates with independently observed avian biodiversity patterns.*
+
+---
+
 # Installation
 
 ## Option 1: Docker (Recommended)
@@ -283,9 +311,9 @@ data/output/
 
 | Output File | Description |
 |------------|-------------|
-| `ensemble_suitability.tif` | Continental ensemble biodiversity suitability surface (\(D\)) |
-| `potential_diversity.tif` | Potential biodiversity baseline (\(P\)) |
-| `intactness_ratio.tif` | Biodiversity Intactness Index (\(D/P\)) bounded to [0,1] |
+| `ensemble_suitability.tif` | Continental ensemble biodiversity suitability surface (D) |
+| `potential_diversity.tif` | Potential biodiversity baseline (P) |
+| `intactness_ratio.tif` | Biodiversity Intactness Index (D/P) bounded to [0,1] |
 | `observational_support.tif` | Smoothed observational support surface derived from occurrence density |
 | `iBII_observational_uncertainty.tif` | Spatial uncertainty layer quantifying disagreement between intactness and observational support |
 | `iBII_uncertainty_classes.tif` | Reclassified uncertainty layer (Very Low–Very High) |
