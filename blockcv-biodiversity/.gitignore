@@ -1,0 +1,33 @@
+# Data files and spatial rasters/vectors
+data/input/*
+data/output/*
+!data/input/.gitkeep
+!data/output/.gitkeep
+
+# Large Spatial File Extensions
+*.tif
+*.tiff
+*.gpkg
+*.shp
+*.dbf
+*.shx
+*.prj
+*.csv
+*.rds
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Docker
+docker_temp/

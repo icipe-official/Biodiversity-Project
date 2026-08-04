@@ -1,0 +1,13 @@
+services:
+  blockcv:
+    build: .
+
+    container_name: blockcv_validation
+
+    volumes:
+      - ./data:/workspace/data
+      - ./outputs:/workspace/outputs
+      - ./blockCV_validation.R:/workspace/blockCV_validation.R
+      - /run/media/vincent/Extreme Pro/FaithAhiono/Species occurrence Africa/Species_occurrence/Species_occurrence:/app/data
+
+    restart: "no"

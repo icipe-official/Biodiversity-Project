@@ -1,0 +1,117 @@
+# =====================================
+# R
+# =====================================
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+*.Rproj
+
+# =====================================
+# Outputs
+# =====================================
+outputs/
+results/
+temp/
+cache/
+logs/
+
+# =====================================
+# Raster Files
+# =====================================
+*.tif
+*.tiff
+*.img
+*.bil
+*.hdr
+*.asc
+*.grd
+*.gri
+*.nc
+
+# =====================================
+# Vector Files
+# =====================================
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.geojson
+
+# =====================================
+# Large Data Directories
+# =====================================
+data/
+predictors/
+rasters/
+imagery/
+downloads/
+scratch/
+
+# Keep folder structure
+!data/.gitkeep
+!data/predictors/.gitkeep
+!outputs/.gitkeep
+
+# =====================================
+# Compressed Files
+# =====================================
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# =====================================
+# Python
+# =====================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# =====================================
+# Conda
+# =====================================
+.env
+.venv
+env/
+venv/
+conda-meta/
+
+# =====================================
+# VSCode
+# =====================================
+.vscode/
+
+# =====================================
+# Linux
+# =====================================
+.DS_Store
+Thumbs.db
+
+# =====================================
+# AWS Credentials
+# =====================================
+.aws/
+*.pem
+*.key
+credentials
+config
+
+# =====================================
+# Environment Variables
+# =====================================
+.env.local
+.env.production
+.env.development
+
+echo "*.RDataTmp" >> .gitignore
+echo "*.RData" >> .gitignore  # optional, if your RData files are also large
+# Temporary R files and workspaces
+*.RDataTmp
+*.RData*
+.RDataTmp
