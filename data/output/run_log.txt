@@ -1,0 +1,254 @@
+2026-10-16 18:27:14 | SDM ensemble v1.0.0 | run 'ensemble_v1' | 8 workers | models: ['BRT', 'GAM', 'GLM', 'MAXENT', 'SVM', 'XGB', 'RF']
+2026-10-16 18:27:14 | --- load AOI and predictor stack: start
+2026-10-16 18:27:14 | 8 predictor rasters found
+2026-10-16 18:28:44 | SDM ensemble v1.0.0 | run 'ensemble_v1' | 8 workers | models: ['BRT', 'GAM', 'GLM', 'MAXENT', 'SVM', 'XGB', 'RF']
+2026-10-16 18:28:44 | --- load AOI and predictor stack: start
+2026-10-16 18:28:44 | 8 predictor rasters found
+2026-10-16 18:30:09 | SDM ensemble v1.0.0 | run 'ensemble_v1' | 8 workers | models: ['BRT', 'GAM', 'GLM', 'MAXENT', 'SVM', 'XGB', 'RF']
+2026-10-16 18:30:09 | --- load AOI and predictor stack: start
+2026-10-16 18:30:09 | 8 predictor rasters found
+2026-10-16 18:31:45 | prediction grid: 8893 x 8304 cells, CRS EPSG:4326
+2026-10-16 18:31:45 | predictor alignment modes (direct=no resampling needed): {'direct': 6, 'warp': 2}
+2026-10-16 18:31:45 | saved predictor inventory: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/00_predictor_inventory.csv
+2026-10-16 18:31:45 | --- load AOI and predictor stack: done in 96.2s
+2026-10-16 18:31:45 | --- presence records: start
+2026-10-16 18:31:57 | saved presence cleaning log: 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/01a_presence_cleaning_log.csv
+2026-10-16 18:31:57 | saved presence-only records used: 7,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/01_presence_records_cleaned.csv
+2026-10-16 18:31:57 | presence cells used: 7,253
+2026-10-16 18:31:57 | --- presence records: done in 11.4s
+2026-10-16 18:31:57 | --- background sampling: start
+2026-10-16 18:32:00 | saved background / pseudo-absence points used: 2,000 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/02_background_pseudo_absence_points.csv
+2026-10-16 18:32:00 | --- background sampling: done in 3.6s
+2026-10-16 18:32:00 | predictors kept 8/8; constant dropped: []; correlated dropped: []
+2026-10-16 18:32:00 | saved selected predictors: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/03a_selected_predictors.csv
+2026-10-16 18:32:00 | saved dropped predictors: 0 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/03b_dropped_predictors.csv
+2026-10-16 18:32:00 | --- spatial block folds: start
+2026-10-16 18:32:00 | saved model dataset (all training/testing records + fold): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04_model_dataset_with_folds.csv
+2026-10-16 18:32:00 | saved cross-validation fold assignments: 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04a_cv_fold_assignments.csv
+2026-10-16 18:32:00 | saved fold summary: 5 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04b_cv_fold_summary.csv
+2026-10-16 18:32:01 | saved train/test membership per fold: 46,265 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04c_train_test_membership_long.csv
+2026-10-16 18:32:01 | saved fold 1 training data: 7,408 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_1_train.csv
+2026-10-16 18:32:01 | saved fold 1 test data: 1,845 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_1_test.csv
+2026-10-16 18:32:01 | saved fold 2 training data: 7,400 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_2_train.csv
+2026-10-16 18:32:01 | saved fold 2 test data: 1,853 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_2_test.csv
+2026-10-16 18:32:01 | saved fold 3 training data: 7,394 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_3_train.csv
+2026-10-16 18:32:01 | saved fold 3 test data: 1,859 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_3_test.csv
+2026-10-16 18:32:01 | saved fold 4 training data: 7,394 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_4_train.csv
+2026-10-16 18:32:01 | saved fold 4 test data: 1,859 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_4_test.csv
+2026-10-16 18:32:01 | saved fold 5 training data: 7,416 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_5_train.csv
+2026-10-16 18:32:01 | saved fold 5 test data: 1,837 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_5_test.csv
+2026-10-16 18:32:01 | --- spatial block folds: done in 0.8s
+2026-10-16 18:32:01 | modelling dataset: 9,253 rows (7253 presences, 2000 background)
+2026-10-16 18:32:01 | --- spatial cross-validation (all models x folds in parallel): start
+2026-10-16 18:32:05 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:05 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:05 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:06 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:06 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:06 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:07 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:07 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:09 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:10 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:15 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:16 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:16 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:17 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:17 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:19 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:19 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:19 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:23 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:27 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:44 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:32:56 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:33:00 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:33:00 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:33:04 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:33:04 | saved CV fit log: 35 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06a_cv_fit_log.csv
+2026-10-16 18:33:04 | --- spatial cross-validation (all models x folds in parallel): done in 62.8s
+2026-10-16 18:33:04 | --- metrics and ensemble weights: start
+2026-10-16 18:33:04 | saved ensemble weights: 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08_ensemble_weights.csv
+2026-10-16 18:33:04 | saved held-out predictions (final): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions.csv
+2026-10-16 18:33:04 | saved CV metrics per fold: 48 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/07_cv_metrics_per_fold.csv
+2026-10-16 18:33:04 | saved CV metrics summary: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/07a_cv_metrics_summary.csv
+2026-10-16 18:33:04 | saved ensemble threshold: 1 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08a_ensemble_threshold.csv
+2026-10-16 18:33:04 | 
+   model  auc_mean  auc_std  tss_mean  boyce_mean  pooled_auc
+     BRT     0.857    0.019     0.580       0.990       0.857
+ENSEMBLE     0.863    0.017     0.585       0.992       0.862
+     GAM     0.849    0.016     0.561       0.992       0.848
+     GLM     0.841    0.016     0.544       0.988       0.841
+  MAXENT     0.849    0.019     0.553       0.963       0.849
+      RF     0.861    0.012     0.579       0.987       0.861
+     SVM     0.845    0.010     0.550       0.997       0.845
+     XGB     0.859    0.013     0.578       0.986       0.859
+2026-10-16 18:33:04 | 
+ model  mean_fold_auc  weight
+   BRT         0.8575  0.1475
+   GAM         0.8491  0.1406
+   GLM         0.8412  0.1343
+MAXENT         0.8490  0.1406
+   SVM         0.8454  0.1377
+   XGB         0.8591  0.1488
+    RF         0.8611  0.1505
+2026-10-16 18:33:04 | NOTE: ensemble weights are derived from the same held-out predictions used to score the ensemble, so ensemble CV metrics are slightly optimistic.
+2026-10-16 18:33:04 | --- metrics and ensemble weights: done in 0.5s
+2026-10-16 18:33:04 | --- final model fitting (all data): start
+2026-10-16 18:33:38 | saved final model BRT (1.1s)
+2026-10-16 18:33:38 | saved final model GAM (1.0s)
+2026-10-16 18:41:06 | SDM ensemble v1.0.0 | run 'ensemble_v1' | 8 workers | models: ['BRT', 'GAM', 'GLM', 'MAXENT', 'SVM', 'XGB', 'RF']
+2026-10-16 18:41:06 | --- load AOI and predictor stack: start
+2026-10-16 18:41:06 | 8 predictor rasters found
+2026-10-16 18:42:51 | prediction grid: 8893 x 8304 cells, CRS EPSG:4326
+2026-10-16 18:42:51 | predictor alignment modes (direct=no resampling needed): {'direct': 6, 'warp': 2}
+2026-10-16 18:42:51 | saved predictor inventory: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/00_predictor_inventory.csv
+2026-10-16 18:42:51 | --- load AOI and predictor stack: done in 105.5s
+2026-10-16 18:42:51 | --- presence records: start
+2026-10-16 18:43:02 | saved presence cleaning log: 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/01a_presence_cleaning_log.csv
+2026-10-16 18:43:02 | saved presence-only records used: 7,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/01_presence_records_cleaned.csv
+2026-10-16 18:43:02 | presence cells used: 7,253
+2026-10-16 18:43:02 | --- presence records: done in 11.0s
+2026-10-16 18:43:02 | --- background sampling: start
+2026-10-16 18:43:06 | saved background / pseudo-absence points used: 2,000 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/02_background_pseudo_absence_points.csv
+2026-10-16 18:43:06 | --- background sampling: done in 3.5s
+2026-10-16 18:43:06 | predictors kept 8/8; constant dropped: []; correlated dropped: []
+2026-10-16 18:43:06 | saved selected predictors: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/03a_selected_predictors.csv
+2026-10-16 18:43:06 | saved dropped predictors: 0 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/03b_dropped_predictors.csv
+2026-10-16 18:43:06 | --- spatial block folds: start
+2026-10-16 18:43:06 | saved model dataset (all training/testing records + fold): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04_model_dataset_with_folds.csv
+2026-10-16 18:43:06 | saved cross-validation fold assignments: 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04a_cv_fold_assignments.csv
+2026-10-16 18:43:06 | saved fold summary: 5 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04b_cv_fold_summary.csv
+2026-10-16 18:43:06 | saved train/test membership per fold: 46,265 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/04c_train_test_membership_long.csv
+2026-10-16 18:43:06 | saved fold 1 training data: 7,408 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_1_train.csv
+2026-10-16 18:43:06 | saved fold 1 test data: 1,845 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_1_test.csv
+2026-10-16 18:43:06 | saved fold 2 training data: 7,400 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_2_train.csv
+2026-10-16 18:43:06 | saved fold 2 test data: 1,853 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_2_test.csv
+2026-10-16 18:43:06 | saved fold 3 training data: 7,394 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_3_train.csv
+2026-10-16 18:43:06 | saved fold 3 test data: 1,859 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_3_test.csv
+2026-10-16 18:43:06 | saved fold 4 training data: 7,394 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_4_train.csv
+2026-10-16 18:43:06 | saved fold 4 test data: 1,859 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_4_test.csv
+2026-10-16 18:43:06 | saved fold 5 training data: 7,416 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_5_train.csv
+2026-10-16 18:43:06 | saved fold 5 test data: 1,837 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/folds/fold_5_test.csv
+2026-10-16 18:43:06 | --- spatial block folds: done in 0.7s
+2026-10-16 18:43:06 | modelling dataset: 9,253 rows (7253 presences, 2000 background)
+2026-10-16 18:43:06 | --- spatial cross-validation (all models x folds in parallel): start
+2026-10-16 18:43:10 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:12 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:12 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:12 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:13 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:13 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:14 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:16 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:17 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:17 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:17 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:19 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:19 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:20 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:21 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:22 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:22 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:22 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:25 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:25 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:25 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:29 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:33 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:43:56 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:44:07 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:44:08 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:44:09 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:44:11 | saved held-out predictions (partial): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions_partial.csv
+2026-10-16 18:44:11 | saved CV fit log: 35 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06a_cv_fit_log.csv
+2026-10-16 18:44:11 | --- spatial cross-validation (all models x folds in parallel): done in 65.1s
+2026-10-16 18:44:11 | --- metrics and ensemble weights: start
+2026-10-16 18:44:12 | saved ensemble weights: 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08_ensemble_weights.csv
+2026-10-16 18:44:12 | saved held-out predictions (final): 9,253 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/06_heldout_predictions.csv
+2026-10-16 18:44:12 | saved CV metrics per fold: 48 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/07_cv_metrics_per_fold.csv
+2026-10-16 18:44:12 | saved CV metrics summary: 8 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/07a_cv_metrics_summary.csv
+2026-10-16 18:44:12 | saved ensemble threshold: 1 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08a_ensemble_threshold.csv
+2026-10-16 18:44:12 | 
+   model  auc_mean  auc_std  tss_mean  boyce_mean  pooled_auc
+     BRT     0.857    0.019     0.580       0.990       0.857
+ENSEMBLE     0.863    0.017     0.585       0.992       0.862
+     GAM     0.849    0.016     0.561       0.992       0.848
+     GLM     0.841    0.016     0.544       0.988       0.841
+  MAXENT     0.849    0.019     0.553       0.963       0.849
+      RF     0.861    0.012     0.579       0.987       0.861
+     SVM     0.845    0.010     0.550       0.997       0.845
+     XGB     0.859    0.013     0.578       0.986       0.859
+2026-10-16 18:44:12 | 
+ model  mean_fold_auc  weight
+   BRT         0.8575  0.1475
+   GAM         0.8491  0.1406
+   GLM         0.8412  0.1343
+MAXENT         0.8489  0.1405
+   SVM         0.8454  0.1377
+   XGB         0.8591  0.1488
+    RF         0.8611  0.1505
+2026-10-16 18:44:12 | NOTE: ensemble weights are derived from the same held-out predictions used to score the ensemble, so ensemble CV metrics are slightly optimistic.
+2026-10-16 18:44:12 | --- metrics and ensemble weights: done in 0.5s
+2026-10-16 18:44:12 | --- final model fitting (all data): start
+2026-10-16 18:44:53 | saved final model BRT (1.4s)
+2026-10-16 18:44:53 | saved final model GAM (1.0s)
+2026-10-16 18:44:53 | saved final model GLM (0.0s)
+2026-10-16 18:44:53 | saved final model MAXENT (40.6s)
+2026-10-16 18:44:53 | saved final model SVM (2.4s)
+2026-10-16 18:44:53 | saved final model XGB (0.4s)
+2026-10-16 18:44:54 | saved final model RF (7.0s)
+2026-10-16 18:44:54 | saved final fit log: 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08b_final_fit_log.csv
+2026-10-16 18:44:54 | saved ensemble weights (final): 7 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/08_ensemble_weights.csv
+2026-10-16 18:44:54 | --- final model fitting (all data): done in 42.0s
+2026-10-16 18:44:54 | --- raster prediction (ensemble + per-model): start
+2026-10-16 18:44:54 | raster grid 8893 x 8304 (73,847,472 cells), 33 blocks, models predicted: ['BRT', 'GAM', 'GLM', 'MAXENT', 'RF', 'SVM', 'XGB']
+2026-10-16 18:45:35 |   prediction progress 3/33 blocks (42s)
+2026-10-16 18:47:03 |   prediction progress 6/33 blocks (129s)
+2026-10-16 18:48:38 |   prediction progress 9/33 blocks (224s)
+2026-10-16 18:50:52 |   prediction progress 12/33 blocks (358s)
+2026-10-16 18:53:29 |   prediction progress 15/33 blocks (515s)
+2026-10-16 18:55:11 |   prediction progress 18/33 blocks (617s)
+2026-10-16 18:56:37 |   prediction progress 21/33 blocks (703s)
+2026-10-16 18:58:07 |   prediction progress 24/33 blocks (793s)
+2026-10-16 18:59:18 |   prediction progress 27/33 blocks (864s)
+2026-10-16 19:00:00 |   prediction progress 30/33 blocks (906s)
+2026-10-16 19:00:11 |   prediction progress 33/33 blocks (917s)
+2026-10-16 19:00:11 | saved output raster summary: 10 rows -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/csv/09_output_raster_summary.csv
+2026-10-16 19:00:11 | 
+                 raster  valid_cells    min   mean    max
+   ENSEMBLE_SUITABILITY     31632604 0.0661 0.4355 0.9760
+ENSEMBLE_UNCERTAINTY_SD     31632604 0.0035 0.1441 0.4079
+                    BRT     31632604 0.0009 0.3913 0.9977
+                    GAM     31632604 0.0002 0.3864 0.9962
+                    GLM     31632604 0.0000 0.3897 0.9927
+                 MAXENT     31632604 0.0001 0.3137 1.0000
+                    SVM     31632604 0.3989 0.6958 0.9243
+                    XGB     31632604 0.0020 0.3977 0.9971
+                     RF     31632604 0.0011 0.4783 1.0000
+        ENSEMBLE_BINARY     31632604 0.0000    NaN 1.0000
+2026-10-16 19:00:11 | --- raster prediction (ensemble + per-model): done in 917.1s
+2026-10-16 19:00:11 | --- reproducibility report: start
+2026-10-16 19:00:13 | saved reproducibility report -> /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/reproducibility/reproducibility_report.json
+2026-10-16 19:00:13 | REPRODUCIBILITY WARNING: Git working tree has uncommitted changes; the commit hash does not fully describe the code.
+2026-10-16 19:00:13 | REPRODUCIBILITY WARNING: CODE_REPO_URL not set.
+2026-10-16 19:00:13 | REPRODUCIBILITY WARNING: CODE_ARCHIVE_DOI not set.
+2026-10-16 19:00:13 | --- reproducibility report: done in 2.4s
+2026-10-16 19:00:14 | ALL DONE in 19.1 min. Outputs: /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output

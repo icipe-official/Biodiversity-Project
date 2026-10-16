@@ -1,0 +1,9 @@
+predictor,raster_file,alignment
+CanopyHeight,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/CanopyHeight.tif,direct
+Precipitation,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/Precipitation.tif,direct
+TCB,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCB.tif,direct
+TCG,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCG.tif,direct
+TCW,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCW.tif,direct
+Temperature,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/Temperature.tif,direct
+landcover,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/landcover.tif,warp
+settlement,/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/settlement.tif,warp

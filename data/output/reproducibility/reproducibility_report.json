@@ -1,0 +1,683 @@
+{
+  "script_version": "1.0.0",
+  "run_label": "ensemble_v1",
+  "started_utc": "2026-10-16T15:41:06.013736+00:00",
+  "finished_utc": "2026-10-16T16:00:13.994760+00:00",
+  "total_runtime_seconds": 1148.0,
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "cpu_count": 8,
+  "gdal_version": "3.12.3",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3",
+    "rasterio": "1.5.0",
+    "geopandas": "1.1.3",
+    "shapely": "2.1.2",
+    "pyproj": "3.7.2",
+    "xgboost": "3.4.2",
+    "pygam": "0.12.0",
+    "elapid": "1.0.4"
+  },
+  "random_seed": 21,
+  "run_configuration": {
+    "OCCURRENCE_CSV": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/CSV/combined_data_landcover_settlement_filtered_20km_thinned.csv",
+    "RASTER_DIR": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI",
+    "OUTPUT_DIR": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output",
+    "AOI_FILE": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.shp",
+    "RUN_LABEL": "ensemble_v1",
+    "PRESENCE_COLUMN": null,
+    "N_BACKGROUND": 2000,
+    "K_FOLDS": 5,
+    "BLOCK_SIZE_M": 100000,
+    "COR_THRESHOLD": 0.9,
+    "SEED": 21,
+    "MODELS": [
+      "BRT",
+      "GAM",
+      "GLM",
+      "MAXENT",
+      "SVM",
+      "XGB",
+      "RF"
+    ],
+    "N_JOBS": -1,
+    "TUNE": false,
+    "TUNE_ITER": 12,
+    "HP": {},
+    "WEIGHT_METHOD": "auc",
+    "WEIGHT_POWER": 2.0,
+    "MIN_MEAN_AUC": 0.55,
+    "CHUNK_CELLS": 600000,
+    "WRITE_MODEL_RASTERS": true,
+    "RESAMPLING": "bilinear",
+    "NODATA": -9999.0,
+    "SAVE_PER_FOLD_CSVS": true,
+    "CODE_REPO_URL": "",
+    "CODE_ARCHIVE_DOI": "",
+    "CODE_ARCHIVE_FILE": "",
+    "CODE_ARCHIVE_SHA256": "",
+    "VERIFY_ONLINE": true,
+    "HASH_FULL_MAX_MB": 256
+  },
+  "effective_hyperparameters": {
+    "BRT": {
+      "hp": {
+        "engine": "hist",
+        "n_estimators": 400,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 10,
+        "subsample": 0.5
+      },
+      "estimator_overrides": {}
+    },
+    "GAM": {
+      "hp": {
+        "n_splines": 8,
+        "lam": 0.6,
+        "max_iter": 100
+      },
+      "estimator_overrides": {}
+    },
+    "GLM": {
+      "hp": {
+        "C": 1.0
+      },
+      "estimator_overrides": {}
+    },
+    "MAXENT": {
+      "hp": {
+        "feature_types": [
+          "linear",
+          "quadratic",
+          "hinge"
+        ],
+        "beta_multiplier": 1.5,
+        "n_hinge_features": 10
+      },
+      "estimator_overrides": {}
+    },
+    "SVM": {
+      "hp": {
+        "mode": "nystroem",
+        "C": 1.0,
+        "gamma": null,
+        "n_components": 300
+      },
+      "estimator_overrides": {}
+    },
+    "XGB": {
+      "hp": {
+        "n_estimators": 400,
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "min_child_weight": 1,
+        "reg_lambda": 1.0
+      },
+      "estimator_overrides": {}
+    },
+    "RF": {
+      "hp": {
+        "n_estimators": 500,
+        "max_features": "sqrt",
+        "min_samples_leaf": 3
+      },
+      "estimator_overrides": {}
+    }
+  },
+  "selected_predictors": [
+    "CanopyHeight",
+    "Precipitation",
+    "TCB",
+    "TCG",
+    "TCW",
+    "Temperature",
+    "landcover",
+    "settlement"
+  ],
+  "dropped_constant": [],
+  "dropped_correlated": [],
+  "n_presence": 7253,
+  "n_background": 2000,
+  "ensemble_weights": [
+    {
+      "model": "BRT",
+      "mean_fold_auc": 0.8574671861644519,
+      "mean_fold_tss": 0.5802596675011878,
+      "mean_fold_boyce": 0.9898827505977271,
+      "pooled_auc": 0.8571381152626499,
+      "raw_weight": 0.12778278918433095,
+      "included_in_ensemble": true,
+      "weight": 0.14749230618245743,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "GAM",
+      "mean_fold_auc": 0.8490563045111408,
+      "mean_fold_tss": 0.5614137014121638,
+      "mean_fold_boyce": 0.9918589273653226,
+      "pooled_auc": 0.8484120363987315,
+      "raw_weight": 0.12184030371897424,
+      "included_in_ensemble": true,
+      "weight": 0.14063323782641413,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "GLM",
+      "mean_fold_auc": 0.841162616852532,
+      "mean_fold_tss": 0.5440261715818767,
+      "mean_fold_boyce": 0.988280777594946,
+      "pooled_auc": 0.8405279539500896,
+      "raw_weight": 0.11639193113766756,
+      "included_in_ensemble": true,
+      "weight": 0.13434449548413374,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "MAXENT",
+      "mean_fold_auc": 0.8489443474267594,
+      "mean_fold_tss": 0.5529828186527868,
+      "mean_fold_boyce": 0.9633729404020425,
+      "pooled_auc": 0.8486331173307596,
+      "raw_weight": 0.12176215760108697,
+      "included_in_ensemble": true,
+      "weight": 0.14054303826808573,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "SVM",
+      "mean_fold_auc": 0.8453756736083491,
+      "mean_fold_tss": 0.5498414305946451,
+      "mean_fold_boyce": 0.9967152458590174,
+      "pooled_auc": 0.8452046049910382,
+      "raw_weight": 0.11928435592042089,
+      "included_in_ensemble": true,
+      "weight": 0.13768305464684055,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "XGB",
+      "mean_fold_auc": 0.8590530588966108,
+      "mean_fold_tss": 0.578481771571664,
+      "mean_fold_boyce": 0.9857483718601749,
+      "pooled_auc": 0.8588814283744656,
+      "raw_weight": 0.12891909910301305,
+      "included_in_ensemble": true,
+      "weight": 0.1488038832071431,
+      "weighting_method": "auc"
+    },
+    {
+      "model": "RF",
+      "mean_fold_auc": 0.8610935459116422,
+      "mean_fold_tss": 0.5788184844901803,
+      "mean_fold_boyce": 0.9868728423048034,
+      "pooled_auc": 0.8610310561147111,
+      "raw_weight": 0.13038854889904328,
+      "included_in_ensemble": true,
+      "weight": 0.15049998438492532,
+      "weighting_method": "auc"
+    }
+  ],
+  "ensemble_threshold_max_tss": 0.5455886849244398,
+  "source_code": {
+    "executed_from": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/src/ensemble.py",
+    "snapshot": {
+      "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/reproducibility/ensemble.py",
+      "size_bytes": 74080,
+      "modified_utc": "2026-10-16T15:40:59.202276+00:00",
+      "sha256": "9da5f24483ff17a5fae60d9505636b5014709513d5419fa6a40d9bbc1df5f49b",
+      "hash_scope": "full"
+    }
+  },
+  "git": {
+    "is_repository": true,
+    "search_dir": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/src",
+    "root": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project",
+    "commit": "113afb1dc98c0e22dd64cbcf62ed87f4bcdd9b8c",
+    "branch": "main",
+    "describe": "113afb1",
+    "remote_origin": "git@github.com:icipe-official/Biodiversity-Project.git",
+    "working_tree_clean": false,
+    "uncommitted_files": [
+      "?? data/input/shapefiles/",
+      "?? data/output/csv/",
+      "?? data/output/models/",
+      "?? data/output/rasters/",
+      "?? data/output/reproducibility/",
+      "?? data/output/run_log.txt",
+      "?? data/output/stage_timings.csv",
+      "?? src/ensemble.py"
+    ],
+    "commit_on_remote_branch": true
+  },
+  "repository_verification": {
+    "configured_url": null
+  },
+  "archive_verification": {
+    "doi": null
+  },
+  "inputs": {
+    "occurrence_csv": {
+      "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/CSV/combined_data_landcover_settlement_filtered_20km_thinned.csv",
+      "size_bytes": 1611842,
+      "modified_utc": "2026-10-15T23:43:55.513672+00:00",
+      "sha256": "fa57dc118c03c6999aac027aba4e01bd186e8e8474ccbf1d473484ab6adc1fe2",
+      "hash_scope": "full"
+    },
+    "aoi_files": [
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.shp",
+        "size_bytes": 23849632,
+        "modified_utc": "2026-10-16T15:15:07.535801+00:00",
+        "sha256": "1c58359adb2862f8bd61ab87c2c50f1fb5a1fe07b78390f2d81b3b495da25a92",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.shx",
+        "size_bytes": 572,
+        "modified_utc": "2026-10-16T15:15:07.567674+00:00",
+        "sha256": "e669a84059c015e8def3bb06cd2dc8c5dcf8d060648944e720a368177aa89164",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.prj",
+        "size_bytes": 335,
+        "modified_utc": "2026-10-16T15:15:07.440079+00:00",
+        "sha256": "de5c1395a1ffc517ee2112b217c89595d01a7944eb65374c06547d4771b29167",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.cst",
+        "size_bytes": 10,
+        "modified_utc": "2026-10-16T15:15:07.356423+00:00",
+        "sha256": "09fc313075748ce8ead962229ed89c919d5a9ff71974ee725a0b48bb87d975a2",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/input/shapefiles/Africa_afr_g2014_2013_0.dbf",
+        "size_bytes": 99181,
+        "modified_utc": "2026-10-16T15:15:07.381801+00:00",
+        "sha256": "877b3443a3c6a97987f5ed9bc46f0171c35c80e0858b0afcb3d4f0cbbb7b94e5",
+        "hash_scope": "full"
+      }
+    ],
+    "predictor_rasters": [
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/CanopyHeight.tif",
+        "size_bytes": 17302656,
+        "modified_utc": "2026-04-02T19:36:44+00:00",
+        "sha256": "fa33dff0dbf063be8c0a7141e561d5364f075635a0cc8892defc8416d28714f9",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/Precipitation.tif",
+        "size_bytes": 66233257,
+        "modified_utc": "2026-04-02T19:37:18+00:00",
+        "sha256": "d0feeba6b0b6ed9520a33a8de243008e23a257b6c30896c954534449dfe10c55",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCB.tif",
+        "size_bytes": 140707004,
+        "modified_utc": "2026-04-02T19:37:34+00:00",
+        "sha256": "f40ee530ad8fae6cffc0ff6e0f5203269381f65e95e170387591f4146001689a",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCG.tif",
+        "size_bytes": 150104749,
+        "modified_utc": "2026-04-02T19:37:54+00:00",
+        "sha256": "892d43bfd82a9cbdf3875999ca081be3412b9c5a09ad1e5fbb7fe876e066f179",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/TCW.tif",
+        "size_bytes": 146478765,
+        "modified_utc": "2026-04-02T19:38:12+00:00",
+        "sha256": "875a07f66022077422980d866fda62d2ca0bac207b776a9dc4ce28ef77af6509",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/Temperature.tif",
+        "size_bytes": 70578010,
+        "modified_utc": "2026-04-02T19:38:30+00:00",
+        "sha256": "898395b1082e9a8c04fabd9add598b2656e7da328b941b7d8bcd8f6ffb30678c",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/landcover.tif",
+        "size_bytes": 93187966,
+        "modified_utc": "2026-10-15T08:46:52.987478+00:00",
+        "sha256": "5f4d8ef74236d68b92df121cb24630e1f0ecbe86dda3fee5bd6c2fb7237fdda8",
+        "hash_scope": "full"
+      },
+      {
+        "path": "/home/vincent/Development/BIODIVERISTY_MS_R4/inputs/rasters/TCI/settlement.tif",
+        "size_bytes": 9986225,
+        "modified_utc": "2025-01-12T07:04:14+00:00",
+        "sha256": "ed8a7219a1f49b125bcb5d7ce5b5494fe04e84ff506a7f9de1d66a3e21c5285e",
+        "hash_scope": "full"
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "file": "csv/00_predictor_inventory.csv",
+      "size_bytes": 772,
+      "sha256": "830d01a98a1ae906342a7365ce7bfd85eff99fc840878ab8181ebb5d9b24c752",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/01_presence_records_cleaned.csv",
+      "size_bytes": 988540,
+      "sha256": "540d7e8b8010a7804faad95b76b26da6cd08a1bfbb52833a7b844bc2f6e1946e",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/01a_presence_cleaning_log.csv",
+      "size_bytes": 193,
+      "sha256": "16128a445df0089ebe1d76d123c75bf6b74bf0a328779efb5c508a6a7e8ee472",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/02_background_pseudo_absence_points.csv",
+      "size_bytes": 317043,
+      "sha256": "a47b60194fc71b85ae584a4621e33c74174dea02c399ff0eea0eb8e42fe016b0",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/03a_selected_predictors.csv",
+      "size_bytes": 82,
+      "sha256": "21716c70dbeb6f6ce9be3b81a889f0257e5da05fabc1f5e71384b5e3a933b0ce",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/03b_dropped_predictors.csv",
+      "size_bytes": 50,
+      "sha256": "64b707b70e0a53de43d28935c453cf9ab20a1d5c0cf47463434f5927496209a5",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/04_model_dataset_with_folds.csv",
+      "size_bytes": 1369140,
+      "sha256": "44382f415f1a0c9ef0b42aae2f99d836ec09c76179ab380ca8bdfc26d8146984",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/04a_cv_fold_assignments.csv",
+      "size_bytes": 435179,
+      "sha256": "ae361fde1b2e819e642524f79547931bb4ada86d47b0ded7438d17632e63f74f",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/04b_cv_fold_summary.csv",
+      "size_bytes": 108,
+      "sha256": "eff17ef2d34df4d282cead7544fa0a290fdb7bd9d83b2fbc001abec53e000865",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/04c_train_test_membership_long.csv",
+      "size_bytes": 2007717,
+      "sha256": "78cdef53eed4b5b6a6a40a846525c8657160955fab6915d7fbc390a6fbda0bd6",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/05_effective_hyperparameters.json",
+      "size_bytes": 1199,
+      "sha256": "7635dc88ce7d768bf9100dbe10a2c421115085ab32c8c7850b9945ab52368592",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/06_heldout_predictions.csv",
+      "size_bytes": 1126601,
+      "sha256": "0028ef5934e51f1ac6826e3e0091fafc291030a6e06ec05166c2c8f426f91745",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/06_heldout_predictions_partial.csv",
+      "size_bytes": 1029876,
+      "sha256": "4ab692449d51020faa4219d2a38afb1d4399d8980e5c5fd237adf77c7bbcfaa2",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/06a_cv_fit_log.csv",
+      "size_bytes": 460,
+      "sha256": "7f4aae0aea395b2ccb81261139110ee80c42e4664a36cb5bb5690134afb2bda2",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/07_cv_metrics_per_fold.csv",
+      "size_bytes": 7211,
+      "sha256": "8a0e10ddd245d6b0f8d84626375ace5798db238442ba40e11aa05a6b19d752a1",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/07a_cv_metrics_summary.csv",
+      "size_bytes": 2593,
+      "sha256": "81e185c12a8ea5c808b9c0fa0c1be66f6f1312d8d27ee11d106eb65727dfcef5",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/08_ensemble_weights.csv",
+      "size_bytes": 1018,
+      "sha256": "b05defebfcef449de3a56ef3cedb6129415770b98ee52ccace8fbdec3298759f",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/08a_ensemble_threshold.csv",
+      "size_bytes": 72,
+      "sha256": "20546d019ad5f53856be1dae76391ed8de3f2276aff0761f270860d6a22336e9",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/08b_final_fit_log.csv",
+      "size_bytes": 91,
+      "sha256": "7e6d85cc12126e5309d744aff61204563cb33fc127e613f8b2d8d8e7dcfc7e2e",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/09_output_raster_summary.csv",
+      "size_bytes": 1939,
+      "sha256": "6dd487bca625bda8f3f4cb70069a2e8174b2079cb841bce943a14c5193adf7be",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_1_test.csv",
+      "size_bytes": 204036,
+      "sha256": "48e7fb2b9ca97570a34e2b72ce03acd46293a718f4f089cc6238f2998c40dec6",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_1_train.csv",
+      "size_bytes": 816881,
+      "sha256": "3945c3570b6aa7615b7e24187bae970828c9652f9915366869fb5ce89742bc57",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_2_test.csv",
+      "size_bytes": 204203,
+      "sha256": "a985a2a73ee1ec23ee4277966806210d914df9f87f4485652de4d6a0e0ce4044",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_2_train.csv",
+      "size_bytes": 816714,
+      "sha256": "690ea484d38108508cdc57befeabe82e5b3b0d52cfb3f5ed6ca53a6592bc0a7e",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_3_test.csv",
+      "size_bytes": 204760,
+      "sha256": "9b358dee1d07b84e31ef5a959e69513fba533b3ffc28b77951d2b5dcc5ac1308",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_3_train.csv",
+      "size_bytes": 816157,
+      "sha256": "4c37fa46a19cbd4aedba01bc98a9f0dcdada4fc62f5524ee7a9fdba1c5442186",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_4_test.csv",
+      "size_bytes": 205643,
+      "sha256": "e32b142cff682d371f66325a314c465409c306e3aaefaf546b53a66b4dfe6d4f",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_4_train.csv",
+      "size_bytes": 815274,
+      "sha256": "e37e9d81d06b037c72c59b6250d562decb38c4d675c48aa723316c87de17fb81",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_5_test.csv",
+      "size_bytes": 202587,
+      "sha256": "70f235c9e76a0acb267ec808d7f69c445c0dab84ecfd69f87645a71207298fac",
+      "hash_scope": "full"
+    },
+    {
+      "file": "csv/folds/fold_5_train.csv",
+      "size_bytes": 818330,
+      "sha256": "9aef1bee58f3c1fb7312927d408917e21e6e154fb5c4a6709320024876f65df0",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_BRT_ensemble_v1.joblib",
+      "size_bytes": 146869,
+      "sha256": "4dde5c8cdeb7fcd3fb2f8bf70224fb43d395c4860953f3475de9a8020026fad8",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_GAM_ensemble_v1.joblib",
+      "size_bytes": 25808,
+      "sha256": "fa05ffd4a46eddc826bd76736ee309a33ff0495b5ca9886043d089d6e6d09eee",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_GLM_ensemble_v1.joblib",
+      "size_bytes": 1789,
+      "sha256": "fc8a74a3199e63b47065e74dad73149e3eb94d9ed46874972e8486f2b0816ef9",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_MAXENT_ensemble_v1.joblib",
+      "size_bytes": 3257,
+      "sha256": "1c8216f8339bebf58eccc79848a06f278127b9c592c3734e3827ca9ececc622c",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_RF_ensemble_v1.joblib",
+      "size_bytes": 17518581,
+      "sha256": "0ad745fd03ef57aa3bc287d6d9bea7c15aa4da6156670f79d8e1977d640469c7",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_SVM_ensemble_v1.joblib",
+      "size_bytes": 715423,
+      "sha256": "494d62b04e76b20a9c9454f96715970b8fc0ee44e3897f43294a50a428e178b7",
+      "hash_scope": "full"
+    },
+    {
+      "file": "models/model_XGB_ensemble_v1.joblib",
+      "size_bytes": 164299,
+      "sha256": "ef38e8229205835b68a4f149a78c4a1a1fc688bbeb225bf1c5d74d32ff9a061a",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/binary_ENSEMBLE_maxTSS_ensemble_v1.tif",
+      "size_bytes": 1869178,
+      "sha256": "e3079ba9c5ea9b89229582e737acea85687afdb3254aada5cdd2b93fa4a5a852",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_BRT_ensemble_v1.tif",
+      "size_bytes": 90659128,
+      "sha256": "968616b1a3769e313aa52a409ffd71b79c10cf0a78b6a02970203b3026399a6e",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_ENSEMBLE_ensemble_v1.tif",
+      "size_bytes": 96161415,
+      "sha256": "1709576e7c8d81d5b23193e029a745ea289a5b0ba449d2e9a9065ec43251715a",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_GAM_ensemble_v1.tif",
+      "size_bytes": 99325141,
+      "sha256": "eec3c1fe8fa1b415870d7dfe94498a06eaf0f1b7eeba3dcfe671d121e26f577a",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_GLM_ensemble_v1.tif",
+      "size_bytes": 99474694,
+      "sha256": "2c8fe708992c3b9bb67d906fc4e7ec97ea1fabc51b144d670890fa993a49ec56",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_MAXENT_ensemble_v1.tif",
+      "size_bytes": 101587199,
+      "sha256": "4f89f8f7183ab46efc07d2917c06b23572889c514aa7623eecf7751618173111",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_RF_ensemble_v1.tif",
+      "size_bytes": 99401731,
+      "sha256": "4a64a216ddb69ab79a569fe0cc72d3a6666e531383ab9da4f7c1ff58f6fad29a",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_SVM_ensemble_v1.tif",
+      "size_bytes": 89992336,
+      "sha256": "fc8b6182daacd1e58751f20f9515463fd5a5c87d931d22985100c32e748bac37",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/suitability_XGB_ensemble_v1.tif",
+      "size_bytes": 95815176,
+      "sha256": "e868ead20d771f592f0bbfecc35063690b1ac022f928fc5a746b6e61a006f2b3",
+      "hash_scope": "full"
+    },
+    {
+      "file": "rasters/uncertainty_sd_ENSEMBLE_ensemble_v1.tif",
+      "size_bytes": 95938469,
+      "sha256": "bf506e343dcc75182bc1d8085fc36a3e6e3c8c35e903f3e472401190cf857de8",
+      "hash_scope": "full"
+    },
+    {
+      "file": "reproducibility/requirements_snapshot.txt",
+      "size_bytes": 6749,
+      "sha256": "4da666b2caae3de06ee2cd4ec4edad297e6b585316e4073cc0817c32001da03e",
+      "hash_scope": "full"
+    },
+    {
+      "file": "reproducibility/run_configuration_initial.json",
+      "size_bytes": 1343,
+      "sha256": "4413cbfa075ffb42a8663df7726b424584ac79333aaa46df899fffddcd26806b",
+      "hash_scope": "full"
+    },
+    {
+      "file": "run_log.txt",
+      "size_bytes": 30460,
+      "sha256": "24969be6eafd339e5df517f443f206a4a5b7f12b420df774322f9b7fb336ed61",
+      "hash_scope": "full"
+    },
+    {
+      "file": "stage_timings.csv",
+      "size_bytes": 306,
+      "sha256": "73d9f8c2244fe3fe4a17cf27149f350ae0fa19da77bd8f475dfce1ed64930118",
+      "hash_scope": "full"
+    }
+  ],
+  "warnings": [
+    "Git working tree has uncommitted changes; the commit hash does not fully describe the code.",
+    "CODE_REPO_URL not set.",
+    "CODE_ARCHIVE_DOI not set."
+  ],
+  "reproducibility_ready": false
+}

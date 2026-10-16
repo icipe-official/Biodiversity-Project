@@ -1,6 +1,6 @@
 # Data files and spatial rasters/vectors
 # data/input/*
-# data/output/*
+data/output/rasters*
 # !data/input/.gitkeep
 # !data/output/.gitkeep
 

@@ -1,0 +1,8 @@
+step,records_remaining
+rows in input file,7291
+valid lon/lat,7291
+unique coordinates,7291
+inside AOI,7291
+inside raster grid,7291
+complete predictor values,7253
+one record per raster cell,7253

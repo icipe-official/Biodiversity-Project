@@ -1,0 +1,10 @@
+stage,seconds
+load AOI and predictor stack,105.54
+presence records,11.03
+background sampling,3.54
+spatial block folds,0.75
+spatial cross-validation (all models x folds in parallel),65.08
+metrics and ensemble weights,0.46
+final model fitting (all data),41.99
+raster prediction (ensemble + per-model),917.14
+reproducibility report,2.44

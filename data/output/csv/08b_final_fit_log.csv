@@ -1,0 +1,8 @@
+model,seconds,error
+BRT,1.35,
+GAM,0.96,
+GLM,0.03,
+MAXENT,40.6,
+SVM,2.45,
+XGB,0.4,
+RF,6.98,

@@ -1,0 +1,11 @@
+raster,file,valid_cells,min,mean,max
+ENSEMBLE_SUITABILITY,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_ENSEMBLE_ensemble_v1.tif,31632604,0.06611826784097963,0.43546688998368577,0.9760138025348677
+ENSEMBLE_UNCERTAINTY_SD,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/uncertainty_sd_ENSEMBLE_ensemble_v1.tif,31632604,0.003520486772151236,0.14406214055303382,0.4079118639872604
+BRT,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_BRT_ensemble_v1.tif,31632604,0.0009146216325461864,0.39134744690608697,0.9977098703384399
+GAM,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_GAM_ensemble_v1.tif,31632604,0.00020653058891184628,0.38643408159028414,0.9962377548217773
+GLM,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_GLM_ensemble_v1.tif,31632604,2.943440904346062e-06,0.3896500368038768,0.9926894903182983
+MAXENT,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_MAXENT_ensemble_v1.tif,31632604,5.584819882642478e-05,0.31365290892233877,1.0
+SVM,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_SVM_ensemble_v1.tif,31632604,0.39888638257980347,0.6958305158347585,0.9242517352104187
+XGB,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_XGB_ensemble_v1.tif,31632604,0.0020402565132826567,0.39774188320769993,0.9971467852592468
+RF,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/suitability_RF_ensemble_v1.tif,31632604,0.00108748534694314,0.4782857529929304,1.0
+ENSEMBLE_BINARY,/home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/data/output/rasters/binary_ENSEMBLE_maxTSS_ensemble_v1.tif,31632604,0.0,,1.0

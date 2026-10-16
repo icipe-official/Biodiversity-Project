@@ -1,0 +1,43 @@
+SDM ENSEMBLE REPRODUCIBILITY REPORT  (script v1.0.0, run 'ensemble_v1')
+==============================================================================
+Started  : 2026-10-16T15:41:06.013736+00:00
+Finished : 2026-10-16T16:00:13.994760+00:00
+Python   : 3.12.13 | Linux-7.0.0-38-generic-x86_64-with-glibc2.43 | GDAL 3.12.3
+Seed     : 21
+Code     : /home/vincent/Development/BIODIVERISTY_MS_R4/Biodiversity-Project/src/ensemble.py  (sha256 9da5f24483ff17a5...)
+Git      : commit 113afb1dc98c0e22dd64cbcf62ed87f4bcdd9b8c branch main clean=False remote=git@github.com:icipe-official/Biodiversity-Project.git
+Repo URL : not set  -> not checked
+Archive  : DOI not set  -> not checked
+
+Packages:
+  numpy: 2.4.6
+  pandas: 3.0.3
+  scipy: 1.17.1
+  scikit-learn: 1.9.0
+  joblib: 1.5.3
+  rasterio: 1.5.0
+  geopandas: 1.1.3
+  shapely: 2.1.2
+  pyproj: 3.7.2
+  xgboost: 3.4.2
+  pygam: 0.12.0
+  elapid: 1.0.4
+
+Presences: 7253   Background: 2000
+Predictors used (8): CanopyHeight, Precipitation, TCB, TCG, TCW, Temperature, landcover, settlement
+Ensemble max-TSS threshold: 0.5456
+Ensemble weights:
+  BRT     0.1475  (mean fold AUC 0.857)
+  GAM     0.1406  (mean fold AUC 0.849)
+  GLM     0.1343  (mean fold AUC 0.841)
+  MAXENT  0.1405  (mean fold AUC 0.849)
+  SVM     0.1377  (mean fold AUC 0.845)
+  XGB     0.1488  (mean fold AUC 0.859)
+  RF      0.1505  (mean fold AUC 0.861)
+
+Warnings:
+  - Git working tree has uncommitted changes; the commit hash does not fully describe the code.
+  - CODE_REPO_URL not set.
+  - CODE_ARCHIVE_DOI not set.
+
+Full details (input/output checksums, configuration): reproducibility_report.json
